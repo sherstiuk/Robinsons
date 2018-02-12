@@ -5,8 +5,6 @@ using System.Text;
 
 namespace Robinsons {
     public class Unification {
-
-        //public static int Subs = 0;
         public static int Performed = 0;
 
         public static string Unify(Term e1, Term e2) {
@@ -16,7 +14,7 @@ namespace Robinsons {
             subs = null;
 
             ///*
-            var sb = new StringBuilder(/*""+composition.Count).Append(*/"{ ");
+            var sb = new StringBuilder("{ ");
             for (int i = 0; i < composition.Count - 1; i++) sb.Append(composition[i].ToString()).Append(" , ");
             return sb.Append(composition[composition.Count - 1]).Append(" }").ToString();
             //*/
@@ -32,35 +30,27 @@ namespace Robinsons {
                 if (((Function)e1).Arity != ((Function)e2).Arity)
                     return null;
             //if (e1.Constant() && e2.Constant()) return e1.ToString().Equals(e2.ToString()) ? subs : null;
-
-            //if variable(E1) / if variable(E2)
             if (e1.Var()) {
-                if (e2.Var())
-                    if (((SimpleTerm)e1).Equals((SimpleTerm)e2)) return subs;
-                else if (((SimpleTerm) e1).OccursIn(ref e2)) return null;
-                //else {
-                    var s = new Substitution(ref e1, ref e2);
-                    //if (!subs.Contains(s)) {
-                        subs.Add(s);
-                        subs.TrimExcess();
-                    //}
-                    s = null;
+                if (e2.Var() && ((SimpleTerm)e1).Equals((SimpleTerm)e2))
                     return subs;
-                //}
+                else if (((SimpleTerm) e1).OccursIn(ref e2))
+                    return null;
+                var s = new Substitution(ref e1, ref e2);
+                subs.Add(s);
+                subs.TrimExcess();
+                s = null;
+                return subs;
             }
             if (e2.Var()) {
-                if (e1.Var())
-                    if (((SimpleTerm)e2).Equals((SimpleTerm)e1)) return subs;
-                else if (((SimpleTerm) e2).OccursIn(ref e1)) return null;
-                //else {
-                    var s = new Substitution(ref e2, ref e1);
-                    //if (!subs.Contains(s)) {
-                        subs.Add(s);
-                        subs.TrimExcess();
-                    //}
-                    s = null;
+                if (e1.Var() && ((SimpleTerm)e2).Equals((SimpleTerm)e1))
                     return subs;
-                //}
+                else if (((SimpleTerm)e2).OccursIn(ref e1))
+                    return null;
+                var s = new Substitution(ref e2, ref e1);
+                subs.Add(s);
+                subs.TrimExcess();
+                s = null;
+                return subs;
             }
             else {
                 var HE1 = ((Function) e1).Head();

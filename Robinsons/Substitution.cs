@@ -10,8 +10,7 @@ namespace Robinsons {
     {
         public Term T1 { get; private set; }
         public Term T2 { get; private set; }
-        //public string T1 { get; private set; }
-        //public string T2 { get; private set; }
+
         /* public bool Empty { get; }
 
          public Substitution() {
@@ -19,8 +18,8 @@ namespace Robinsons {
          }*/
 
         public Substitution(ref Term t1, ref Term t2) {
-            this.T1 = t1;//.ToString();
-            this.T2 = t2;//.ToString();
+            this.T1 = t1;
+            this.T2 = t2;
             //this.Empty = false;
         }
 

@@ -42,7 +42,6 @@ namespace Robinsons {
         public override Term ApplySubstitution(ref Substitution s) {
             for (int i = 0; i < Arity; i++)
                 Args[i] = Args[i].Replace(s.T1.ToString(), s.T2.ToString());
-            //Regex.Replace(Args[i], ( s.T1.ToString() + "\\b"), s.T2.ToString());
             return this;
         }
         
@@ -51,19 +50,14 @@ namespace Robinsons {
                 for (int j = start; j < subs.Count; j++) {
                     if (Args[i] == subs[j].T1.ToString()) Args[i] = subs[j].T2.ToString();
                     Args[i] = Args[i].Replace(subs[j].T1.ToString(), subs[j].T2.ToString());
-                    //Regex.Replace(Args[i], (subs[j].T1.ToString() + "\\b"), subs[j].T2.ToString());
                 }
             return this;
         }
 
         public override string ToString() {
-            //if (Content  == null) {
-                var sb = (new StringBuilder("F(")); //StringBuilder(Name)).Append('(')
-                for (int i = 0; i < Arity; i++) sb.Append(Args[i]);//Arity - 1; i++) sb.Append(Args[i]).Append(',');
-                //Content = sb.Append(')').ToString();
-                return sb.Append(')').ToString();//sb.Append(Args[Arity - 1]).Append(')').ToString();
-            //}
-            //return Content;
+            var sb = (new StringBuilder("F(")); //StringBuilder(Name)).Append('(')
+            for (int i = 0; i < Arity; i++) sb.Append(Args[i]); //Arity - 1; i++) sb.Append(Args[i]).Append(',');
+            return sb.Append(')').ToString(); //sb.Append(Args[Arity - 1]).Append(')').ToString();
         }
     }
 }

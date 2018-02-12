@@ -14,8 +14,7 @@ namespace Robinsons {
         }
 
         public override Term ApplySubstitution(ref Substitution s) {
-            Content = //Regex.Replace(Content, (s.T1.ToString() + "\\b"), s.T2.ToString());
-                Content.Replace(s.T1.ToString(), s.T2.ToString());
+            Content = Content.Replace(s.T1.ToString(), s.T2.ToString());
             return this;
         }
 
@@ -24,7 +23,6 @@ namespace Robinsons {
                 if (Content == subs[i].T1.ToString()) Content = subs[i].T2.ToString();
                 Content = Content.Replace(subs[i].T1.ToString(), subs[i].T2.ToString());
             }
-            //Content.Replace((subs[i].T1.ToString() + "\\b"), subs[i].T2.ToString()); //"\\b" + subs[i].T1 + "\\b"
             return this;
         }
 
@@ -37,8 +35,7 @@ namespace Robinsons {
         }
 
         public bool OccursIn(ref Term e2) {
-            //return false;
-            return e2.ToString().Contains(Content);//Regex.Match(Content, e2.ToString()).Success;
+            return e2.ToString().Contains(Content);
         }
 
         public bool Equals(SimpleTerm other) {
