@@ -39,6 +39,12 @@ namespace Robinsons {
             return Args[0];
         }
 
+        public override void ApplySubstitution(ref string from, ref string to) {
+            for (int i = 0; i < Arity; i++)
+                Args[i] = Args[i].Replace(@from, @to);
+        }
+
+        /*
         public override Term ApplySubstitution(ref Substitution s) {
             for (int i = 0; i < Arity; i++)
                 Args[i] = Args[i].Replace(s.T1.ToString(), s.T2.ToString());
@@ -52,7 +58,7 @@ namespace Robinsons {
                     Args[i] = Args[i].Replace(subs[j].T1.ToString(), subs[j].T2.ToString());
                 }
             return this;
-        }
+        }*/
 
         public override string ToString() {
             var sb = (new StringBuilder("F(")); //StringBuilder(Name)).Append('(')

@@ -13,6 +13,9 @@ namespace Robinsons {
             //Type = Regex.Match(str, @"[a-zA-Z]+[0-9]+").Success ? TermType.Var : TermType.Const;
         }
 
+        public override void ApplySubstitution(ref string from, ref string to) => Content = Content.Replace(@from, @to);
+
+        /*
         public override Term ApplySubstitution(ref Substitution s) {
             Content = Content.Replace(s.T1.ToString(), s.T2.ToString());
             return this;
@@ -21,10 +24,10 @@ namespace Robinsons {
         public override Term ApplySubstitution(ref List<Substitution> subs, int start) {
             for (int i = start; i < subs.Count; i++) {
                 if (Content == subs[i].T1.ToString()) Content = subs[i].T2.ToString();
-                Content = Content.Replace(subs[i].T1.ToString(), subs[i].T2.ToString());
+                Content = Content.Replace(@subs[i].T1.ToString(), @subs[i].T2.ToString());
             }
             return this;
-        }
+        }*/
 
         public override string ToString() {
             return Content;

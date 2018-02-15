@@ -57,13 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Substitutions.cs" />
     <Compile Include="FuncAnalyzer.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="HTermGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleTerm.cs" />
-    <Compile Include="Substitution.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="TermCreator.cs" />
     <Compile Include="Unification.cs" />

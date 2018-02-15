@@ -15,11 +15,11 @@ namespace Robinsons {
                 args.Add("y" + n);
             }
             else {
-                for (int i = 0; i < 10; i++, arity++) args.Add("x0" + i);
+                for (int i = 1; i < 10; i++, arity++) args.Add("x0" + i);
                 for (int i = 10; i <= n; i++, arity++) args.Add("x" + i);
                 //for (int i = 1; i < 10; i++, arity++) args.Add("f(y0" + i + "," + "y0" + i + ")");
                 //for (int i = 10; i < n; i++, arity++) args.Add("f(y" + i + "," + "y" + i + ")");
-                for (int i = 1; i < 10; i++, arity++) args.Add("F(y0" + i + "y0" + i + ")");
+                for (int i = 0; i < 10; i++, arity++) args.Add("F(y0" + i + "y0" + i + ")");
                 for (int i = 10; i < n; i++, arity++) args.Add("F(y" + i + "y" + i + ")");
                 args.Add("x" + n);
             }

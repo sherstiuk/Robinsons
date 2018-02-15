@@ -33,13 +33,16 @@ namespace Robinsons {
             return this.Type == TermType.Empty;
         }
 
+        public virtual void ApplySubstitution(ref string from, ref string to) {}
+        
+        /*
         public virtual Term ApplySubstitution(ref Substitution s) {
             return this;
         }
 
         public virtual Term ApplySubstitution(ref List<Substitution> subs, int start) {
             return this;
-        }
+        }*/
 
         public override string ToString() {
             return "";
